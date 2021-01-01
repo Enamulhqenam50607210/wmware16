@@ -1,0 +1,29 @@
+Run these commands in the terminal:-
+
+vmware -v
+wget https://github.com/mkubecek/vmware-host-modules/archive/workstation-15.0.4.tar.gz
+tar -xzf workstation-15.0.4.tar.gz
+cd vmware-host-modules-workstation-15.0.4
+
+
+Error 2:- Could not open /dev/vmmon: No such file or directory.
+   Please make sure that the kernel module `vmmon' is loaded.
+Error 3:- Failed to initialize monitor device.
+
+FIX:-
+
+tar -cf vmmon.tar vmmon-only
+tar -cf vmnet.tar vmnet-only
+sudo cp -v vmmon.tar vmnet.tar /usr/lib/vmware/modules/source/
+sudo vmware-modconfig --console --install-all
+
+
+
+
+
+
+
+
+
+Source:-
+https://github.com/mkubecek/vmware-host-modules
