@@ -1,0 +1,20 @@
+sudo apt install -y curl
+curl -L https://www.vmware.com/go/getworkstation-linux > Downloads/vmware.bin
+file Downloads/vmware.bin
+Downloads/vmware.bin: a /usr/bin/env bash script executable (binary data)
+chmod +x Downloads/vmware.bin
+sudo ./Downloads/vmware.bin
+
+
+#After checking installation if you still have problem then follow below steps
+
+ wget https://github.com/mkubecek/vmware-host-modules/archive/workstation-15.5.6.tar.gz
+ tar -xzf workstation-15.5.6.tar.gz
+ cd vmware-host-modules-workstation-15.5.6
+ tar -cf vmmon.tar vmmon-only
+ tar -cf vmnet.tar vmnet-only
+ 
+ #then type sudo su for accessing root privileges
+
+cp -v vmmon.tar vmnet.tar /usr/lib/vmware/modules/source/
+  vmware-modconfig --console --install-all
